@@ -1,0 +1,124 @@
+[
+  {
+    "model": "categories.categorie",
+    "pk": 1,
+    "fields": {
+      "nom": "Antalgique",
+      "description": "Médicaments contre la douleur"
+    }
+  },
+  {
+    "model": "categories.categorie",
+    "pk": 2,
+    "fields": {
+      "nom": "Antibiotique",
+      "description": "Médicaments antibactériens"
+    }
+  },
+  {
+    "model": "categories.categorie",
+    "pk": 3,
+    "fields": {
+      "nom": "Anti-inflammatoire",
+      "description": "Médicaments anti-inflammatoires"
+    }
+  },
+  {
+    "model": "categories.categorie",
+    "pk": 4,
+    "fields": {
+      "nom": "Vitamines",
+      "description": "Compléments vitaminés"
+    }
+  },
+  {
+    "model": "medicaments.medicament",
+    "pk": 1,
+    "fields": {
+      "nom": "Paracétamol",
+      "dci": "Paracétamol",
+      "categorie": 1,
+      "forme": "comprime",
+      "dosage": "500mg",
+      "prix_achat": "5.50",
+      "prix_vente": "8.00",
+      "stock_actuel": 150,
+      "stock_minimum": 50,
+      "date_expiration": "2027-12-31",
+      "ordonnance_requise": false,
+      "est_actif": true
+    }
+  },
+  {
+    "model": "medicaments.medicament",
+    "pk": 2,
+    "fields": {
+      "nom": "Amoxicilline",
+      "dci": "Amoxicilline",
+      "categorie": 2,
+      "forme": "gelule",
+      "dosage": "1g",
+      "prix_achat": "15.00",
+      "prix_vente": "22.00",
+      "stock_actuel": 80,
+      "stock_minimum": 40,
+      "date_expiration": "2027-06-30",
+      "ordonnance_requise": true,
+      "est_actif": true
+    }
+  },
+  {
+    "model": "medicaments.medicament",
+    "pk": 3,
+    "fields": {
+      "nom": "Ibuprofène",
+      "dci": "Ibuprofène",
+      "categorie": 3,
+      "forme": "comprime",
+      "dosage": "400mg",
+      "prix_achat": "7.00",
+      "prix_vente": "12.00",
+      "stock_actuel": 25,
+      "stock_minimum": 30,
+      "date_expiration": "2028-03-15",
+      "ordonnance_requise": false,
+      "est_actif": true
+    }
+  },
+  {
+    "model": "medicaments.medicament",
+    "pk": 4,
+    "fields": {
+      "nom": "Vitamine C",
+      "dci": "Acide ascorbique",
+      "categorie": 4,
+      "forme": "comprime",
+      "dosage": "1000mg",
+      "prix_achat": "12.00",
+      "prix_vente": "18.00",
+      "stock_actuel": 200,
+      "stock_minimum": 80,
+      "date_expiration": "2029-01-01",
+      "ordonnance_requise": false,
+      "est_actif": true
+    }
+  },
+  {
+    "model": "medicaments.medicament",
+    "pk": 5,
+    "fields": {
+      "nom": "Doliprane",
+      "dci": "Paracétamol",
+      "categorie": 1,
+      "forme": "sirop",
+      "dosage": "120mg/5ml",
+      "prix_achat": "18.00",
+      "prix_vente": "25.00",
+      "stock_actuel": 10,
+      "stock_minimum": 20,
+      "date_expiration": "2027-09-20",
+      "ordonnance_requise": false,
+      "est_actif": true
+    }
+  }
+]
