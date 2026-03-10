@@ -13,26 +13,76 @@ Application de gestion de pharmacie - Développé dans le cadre du test techniqu
 
 ```
 farmacie/
-├── backend/              # Application Django
-│   ├── apps/            # Applications Django
-│   │   ├── categories/  # App catégories
-│   │   ├── medicaments/ # App médicaments
-│   │   └── ventes/      # App ventes
-│   ├── config/          # Configuration Django
-│   │   └── settings/    # Settings (base.py, local.py)
-│   ├── docs/            # Documentation API
-│   ├── fixtures/        # Données de test
-│   ├── Dockerfile       # Docker backend
-│   └── requirements.txt
-├── frontend/            # Application React
+├── backend/                    # Application Django
+│   ├── apps/                  # Applications Django
+│   │   ├── __init__.py
+│   │   ├── categories/        # Gestion des catégories
+│   │   │   ├── migrations/
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   ├── medicaments/       # Gestion des médicaments
+│   │   │   ├── migrations/
+│   │   │   ├── __init__.py
+│   │   │   ├── admin.py
+│   │   │   ├── apps.py
+│   │   │   ├── models.py
+│   │   │   ├── serializers.py
+│   │   │   ├── urls.py
+│   │   │   └── views.py
+│   │   └── ventes/            # Gestion des ventes
+│   │       ├── migrations/
+│   │       ├── __init__.py
+│   │       ├── admin.py
+│   │       ├── apps.py
+│   │       ├── models.py
+│   │       ├── serializers.py
+│   │       ├── urls.py
+│   │       └── views.py
+│   ├── config/                # Configuration Django
+│   │   ├── settings/
+│   │   │   ├── __init__.py
+│   │   │   ├── base.py       # Settings communs
+│   │   │   └── local.py      # Settings développement
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── docs/                  # Documentation API
+│   │   ├── API.md            # Documentation endpoints
+│   │   ├── SWAGGER_GUIDE.md  # Guide Swagger
+│   │   └── README.md         # Index documentation
+│   ├── fixtures/              # Données de test
+│   │   └── initial_data.json
+│   ├── Dockerfile
+│   ├── entrypoint.sh
+│   ├── manage.py
+│   ├── requirements.txt
+│   └── README.md
+├── frontend/                   # Application React
+│   ├── public/
 │   ├── src/
-│   │   ├── api/         # Couche API
-│   │   ├── pages/       # Pages de l'application
-│   │   └── App.jsx      # Composant principal
-│   ├── Dockerfile       # Docker frontend
-│   └── package.json
-├── docker-compose.yml   # Orchestration Docker
-└── README.md
+│   │   ├── api/               # Services API
+│   │   │   ├── categoriesApi.js
+│   │   │   ├── medicamentsApi.js
+│   │   │   └── ventesApi.js
+│   │   ├── pages/             # Pages React
+│   │   │   ├── DashboardPage.jsx
+│   │   │   ├── MedicamentsPage.jsx
+│   │   │   └── VentesPage.jsx
+│   │   ├── App.css            # Styles globaux
+│   │   ├── App.jsx            # Composant principal
+│   │   └── main.jsx           # Point d'entrée
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── vite.config.js
+│   └── README.md
+├── docker-compose.yml         # Orchestration Docker
+└── README.md                  # Ce fichier
 
 ```
 
