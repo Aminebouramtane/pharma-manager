@@ -2,8 +2,9 @@
 
 # Wait for PostgreSQL to be ready
 echo "Waiting for PostgreSQL..."
-while ! nc -z $DB_HOST $DB_PORT; do
-  sleep 0.1
+export PGPASSWORD="$DB_PASSWORD"
+until psql -h "$DB_HOST" -U "$DB_USER" -d "$DB_NAME" -c '\q' 2>/dev/null; do
+  sleep 1
 done
 echo "PostgreSQL started"
 

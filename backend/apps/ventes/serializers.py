@@ -4,7 +4,7 @@ Serializers pour l'application ventes.
 from rest_framework import serializers
 from django.db import transaction
 from .models import Vente, LigneVente
-from medicaments.models import Medicament
+from apps.medicaments.models import Medicament
 
 
 class LigneVenteSerializer(serializers.ModelSerializer):

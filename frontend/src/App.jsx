@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { FaHome, FaPills, FaShoppingCart, FaHospital } from 'react-icons/fa';
 import DashboardPage from './pages/DashboardPage';
 import MedicamentsPage from './pages/MedicamentsPage';
 import VentesPage from './pages/VentesPage';
@@ -11,11 +12,11 @@ function App() {
         {/* Navigation */}
         <nav className="navbar">
           <div className="nav-container">
-            <h1 className="nav-logo">💊 PharmaManager</h1>
+            <h1 className="nav-logo"><FaHospital /> PharmaManager</h1>
             <ul className="nav-menu">
-              <li><Link to="/" className="nav-link">Dashboard</Link></li>
-              <li><Link to="/medicaments" className="nav-link">Médicaments</Link></li>
-              <li><Link to="/ventes" className="nav-link">Ventes</Link></li>
+              <li><Link to="/" className="nav-link"><FaHome /> Dashboard</Link></li>
+              <li><Link to="/medicaments" className="nav-link"><FaPills /> Médicaments</Link></li>
+              <li><Link to="/ventes" className="nav-link"><FaShoppingCart /> Ventes</Link></li>
             </ul>
           </div>
         </nav>

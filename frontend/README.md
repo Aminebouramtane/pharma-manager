@@ -1,16 +1,112 @@
-# React + Vite
+# PharmaManager Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend React + Vite pour l'application de gestion de pharmacie.
 
-Currently, two official plugins are available:
+## Technologies
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 18
+- Vite 7.3
+- React Router 6
+- Axios
+- React Icons
+- React Toastify
 
-## React Compiler
+## Installation avec Docker
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Le frontend est conteneurisé et s'exécute automatiquement avec Docker Compose.
 
-## Expanding the ESLint configuration
+```bash
+# Depuis la racine du projet
+docker-compose up -d frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Voir les logs
+docker-compose logs -f frontend
+
+# Rebuild après modifications
+docker-compose build frontend
+docker-compose up -d frontend
+```
+
+L'application sera accessible sur: http://localhost:5173
+
+## Structure du projet
+
+```
+frontend/
+├── src/
+│   ├── api/              # Couche API
+│   │   ├── categoriesApi.js
+│   │   ├── medicamentsApi.js
+│   │   └── ventesApi.js
+│   ├── pages/            # Pages de l'application
+│   │   ├── DashboardPage.jsx
+│   │   ├── MedicamentsPage.jsx
+│   │   └── VentesPage.jsx
+│   ├── App.jsx           # Composant principal
+│   ├── App.css           # Styles globaux
+│   └── main.jsx          # Point d'entrée
+├── Dockerfile            # Configuration Docker
+├── package.json
+└── vite.config.js
+```
+
+## Variables d'environnement
+
+Configurées automatiquement dans docker-compose.yml:
+
+```env
+VITE_API_URL=http://localhost:8000/api/v1
+```
+
+## Fonctionnalités
+
+### Dashboard
+- Statistiques en temps réel
+- Alertes de stock bas
+- Ventes du jour
+- Médicaments proches de l'expiration
+
+### Gestion des Médicaments
+- Liste avec filtres et recherche
+- Création de nouveaux médicaments
+- Modification des informations
+- Suppression avec confirmation toast
+- Alertes visuelles pour stocks bas
+
+### Gestion des Ventes
+- Panier d'achat interactif
+- Sélection de médicaments
+- Calcul automatique du total
+- Historique des ventes
+- Annulation avec confirmation toast
+
+## Commandes Docker utiles
+
+```bash
+# Rebuild après ajout de dépendances
+docker-compose build frontend
+
+# Redémarrer le service
+docker-compose restart frontend
+
+# Voir les logs en temps réel
+docker-compose logs -f frontend
+
+# Accéder au shell du conteneur
+docker-compose exec frontend sh
+
+# Installer une nouvelle dépendance (puis rebuild)
+docker-compose exec frontend npm install <package>
+```
+
+## Développement
+
+Le hot reload est activé dans Docker, les modifications du code sont reflétées automatiquement.
+
+## API Backend
+
+L'application communique avec le backend Django via Axios.
+Base URL configurée: `http://localhost:8000/api/v1`
+
+Documentation API complète: `backend/docs/API.md`
+

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FaShoppingCart, FaPlus, FaTrash, FaBan, FaTimes } from 'react-icons/fa';
 import { fetchVentes, createVente, annulerVente } from '../api/ventesApi';
 import { fetchMedicaments } from '../api/medicamentsApi';
 
@@ -97,14 +98,17 @@ function VentesPage() {
   };
 
   const handleAnnulerVente = async (id) => {
-    if (window.confirm('Êtes-vous sûr de vouloir annuler cette vente?')) {
+    const vente = ventes.find(v => v.id === id);
+    const confirmed = window.confirm(`Êtes-vous sûr de vouloir annuler cette vente (${parseFloat(vente?.montant_total || 0).toFixed(2)} DH) ?`);
+    
+    if (confirmed) {
       try {
         await annulerVente(id);
         setSuccess('Vente annulée avec succès');
         loadData();
         setTimeout(() => setSuccess(null), 3000);
       } catch (err) {
-        setError('Erreur lors de l\'annulation');
+        setError('Erreur lors de l\'annulation de la vente');
         console.error(err);
       }
     }
@@ -189,7 +193,7 @@ function VentesPage() {
                           onClick={() => removeFromCart(item.medicament.id)}
                           style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
                         >
-                          Retirer
+                          <FaTimes /> Retirer
                         </button>
                       </td>
                     </tr>
@@ -206,7 +210,7 @@ function VentesPage() {
               </table>
 
               <button className="btn btn-success" onClick={handleSubmitVente}>
-                Valider la vente
+                <FaShoppingCart /> Valider la vente
               </button>
             </div>
           )}
@@ -248,7 +252,7 @@ function VentesPage() {
                         onClick={() => handleAnnulerVente(vente.id)}
                         style={{ fontSize: '0.75rem', padding: '0.25rem 0.5rem' }}
                       >
-                        Annuler
+                        <FaBan /> Annuler
                       </button>
                     )}
                   </td>

@@ -1,38 +1,42 @@
 [
   {
-    "model": "categories.categorie",
+    "model": "apps.categories.categorie",
     "pk": 1,
     "fields": {
       "nom": "Antalgique",
-      "description": "Médicaments contre la douleur"
+      "description": "Médicaments contre la douleur",
+      "date_creation": "2026-03-10T10:00:00Z"
     }
   },
   {
-    "model": "categories.categorie",
+    "model": "apps.categories.categorie",
     "pk": 2,
     "fields": {
       "nom": "Antibiotique",
-      "description": "Médicaments antibactériens"
+      "description": "Médicaments antibactériens",
+      "date_creation": "2026-03-10T10:00:00Z"
     }
   },
   {
-    "model": "categories.categorie",
+    "model": "apps.categories.categorie",
     "pk": 3,
     "fields": {
       "nom": "Anti-inflammatoire",
-      "description": "Médicaments anti-inflammatoires"
+      "description": "Médicaments anti-inflammatoires",
+      "date_creation": "2026-03-10T10:00:00Z"
     }
   },
   {
-    "model": "categories.categorie",
+    "model": "apps.categories.categorie",
     "pk": 4,
     "fields": {
       "nom": "Vitamines",
-      "description": "Compléments vitaminés"
+      "description": "Compléments vitaminés",
+      "date_creation": "2026-03-10T10:00:00Z"
     }
   },
   {
-    "model": "medicaments.medicament",
+    "model": "apps.medicaments.medicament",
     "pk": 1,
     "fields": {
       "nom": "Paracétamol",
@@ -46,11 +50,12 @@
       "stock_minimum": 50,
       "date_expiration": "2027-12-31",
       "ordonnance_requise": false,
+      "date_creation": "2026-03-10T10:00:00Z",
       "est_actif": true
     }
   },
   {
-    "model": "medicaments.medicament",
+    "model": "apps.medicaments.medicament",
     "pk": 2,
     "fields": {
       "nom": "Amoxicilline",
@@ -64,11 +69,12 @@
       "stock_minimum": 40,
       "date_expiration": "2027-06-30",
       "ordonnance_requise": true,
+      "date_creation": "2026-03-10T10:00:00Z",
       "est_actif": true
     }
   },
   {
-    "model": "medicaments.medicament",
+    "model": "apps.medicaments.medicament",
     "pk": 3,
     "fields": {
       "nom": "Ibuprofène",
@@ -82,11 +88,12 @@
       "stock_minimum": 30,
       "date_expiration": "2028-03-15",
       "ordonnance_requise": false,
+      "date_creation": "2026-03-10T10:00:00Z",
       "est_actif": true
     }
   },
   {
-    "model": "medicaments.medicament",
+    "model": "apps.medicaments.medicament",
     "pk": 4,
     "fields": {
       "nom": "Vitamine C",
@@ -100,11 +107,12 @@
       "stock_minimum": 80,
       "date_expiration": "2029-01-01",
       "ordonnance_requise": false,
+      "date_creation": "2026-03-10T10:00:00Z",
       "est_actif": true
     }
   },
   {
-    "model": "medicaments.medicament",
+    "model": "apps.medicaments.medicament",
     "pk": 5,
     "fields": {
       "nom": "Doliprane",
@@ -118,6 +126,7 @@
       "stock_minimum": 20,
       "date_expiration": "2027-09-20",
       "ordonnance_requise": false,
+      "date_creation": "2026-03-10T10:00:00Z",
       "est_actif": true
     }
   }

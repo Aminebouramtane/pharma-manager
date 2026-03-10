@@ -4,7 +4,7 @@ Serializers pour l'application medicaments.
 from rest_framework import serializers
 from django.utils import timezone
 from .models import Medicament
-from categories.serializers import CategorieSerializer
+from apps.categories.serializers import CategorieSerializer
 
 
 class MedicamentListSerializer(serializers.ModelSerializer):

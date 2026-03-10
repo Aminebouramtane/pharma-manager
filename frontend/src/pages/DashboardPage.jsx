@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FaPills, FaExclamationTriangle, FaShoppingCart } from 'react-icons/fa';
 import { fetchMedicaments, fetchMedicamentsAlertes } from '../api/medicamentsApi';
 import { fetchVentes } from '../api/ventesApi';
 
@@ -53,7 +54,7 @@ function DashboardPage() {
         </div>
 
         <div className="stat-card">
-          <div className="stat-label">⚠️ Alertes de stock</div>
+          <div className="stat-label">Alertes de stock</div>
           <div className="stat-value" style={{ color: '#dc2626' }}>
             {stats.alertes}
           </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { FaPlus, FaTimes, FaTrash, FaExclamationTriangle, FaSave } from 'react-icons/fa';
 import { fetchMedicaments, fetchMedicamentsAlertes, createMedicament, updateMedicament, deleteMedicament } from '../api/medicamentsApi';
 import { fetchCategories } from '../api/categoriesApi';
 
@@ -50,23 +51,40 @@ function MedicamentsPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createMedicament(formData);
+      // Convert numeric strings to numbers
+      const dataToSend = {
+        ...formData,
+        categorie: parseInt(formData.categorie),
+        prix_achat: parseFloat(formData.prix_achat),
+        prix_vente: parseFloat(formData.prix_vente),
+        stock_actuel: parseInt(formData.stock_actuel),
+        stock_minimum: parseInt(formData.stock_minimum)
+      };
+      
+      await createMedicament(dataToSend);
       setShowForm(false);
       resetForm();
       loadData();
+      setError(null);
     } catch (err) {
-      setError('Erreur lors de la création du médicament');
-      console.error(err);
+      const errorMessage = err.response?.data?.detail 
+        || Object.entries(err.response?.data || {}).map(([key, value]) => `${key}: ${Array.isArray(value) ? value.join(', ') : value}`).join('; ')
+        || 'Erreur lors de la création du médicament';
+      setError(errorMessage);
+      console.error('Erreur détaillée:', err.response?.data);
     }
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Êtes-vous sûr de vouloir supprimer ce médicament?')) {
+    const medicament = medicaments.find(m => m.id === id);
+    const confirmed = window.confirm(`Êtes-vous sûr de vouloir supprimer le médicament "${medicament?.nom}" ?`);
+    
+    if (confirmed) {
       try {
         await deleteMedicament(id);
         loadData();
       } catch (err) {
-        setError('Erreur lors de la suppression');
+        setError('Erreur lors de la suppression du médicament');
         console.error(err);
       }
     }
@@ -97,7 +115,7 @@ function MedicamentsPage() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <h1 className="page-title" style={{ marginBottom: 0 }}>Médicaments</h1>
         <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
-          {showForm ? 'Annuler' : '+ Nouveau médicament'}
+          {showForm ? <><FaTimes /> Annuler</> : <><FaPlus /> Nouveau médicament</>}
         </button>
       </div>
 
@@ -105,7 +123,7 @@ function MedicamentsPage() {
 
       {alertes.length > 0 && (
         <div className="alert alert-warning">
-          ⚠️ {alertes.length} médicament(s) en alerte de stock
+          <FaExclamationTriangle /> {alertes.length} médicament(s) en alerte de stock
         </div>
       )}
 
@@ -275,7 +293,7 @@ function MedicamentsPage() {
                   <td>{med.categorie_nom}</td>
                   <td>
                     {med.stock_actuel}
-                    {med.est_en_alerte && <span className="badge badge-danger" style={{ marginLeft: '0.5rem' }}>⚠️</span>}
+                    {med.est_en_alerte && <span className="badge badge-danger" style={{ marginLeft: '0.5rem' }}>ALERTE</span>}
                   </td>
                   <td>{parseFloat(med.prix_vente).toFixed(2)} DH</td>
                   <td>
